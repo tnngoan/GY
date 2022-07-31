@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-const options = [
+export const options = [
 	{ label: "Category", value: "" },
 	{ label: "Recreational", value: "recreational" },
 	{ label: "Social", value: "social" },
@@ -10,6 +10,7 @@ const options = [
 	{ label: "Charity", value: "charity" },
 	{ label: "Cooking", value: "cooking" },
 	{ label: "Relaxation", value: "relaxation" },
+	{ label: "Music", value: "music" },
 	{ label: "Busywork", value: "busywork" },
 	{ label: "Education", value: "education" },
 ]
@@ -24,18 +25,16 @@ export const CreateTodo = () => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		const todo = {
-			title: data.title,
-			catogory: data.category
-		}
-		console.log({ todo });
+		alert("Creating task " + data.title)
 		axios.post("http://localhost:8000/api/todo", data).then((res) => {
 			setData({ title: "", category: "" })
 			console.log(res.data.message);
 		}).catch((err) => {
-			console.log("Error: cannot create todo")
 			console.log(err.message)
+			alert("Fill in the blank!")
 		})
+		// after creating, fetch again 
+		
 	}
 	return (
 		<section>
@@ -44,8 +43,8 @@ export const CreateTodo = () => {
 					go back
 				</button>
 			</Link> */}
-			<div>
-				<form onSubmit={handleSubmit} type="text" noValidate>
+			<form onSubmit={handleSubmit} type="text" noValidate>
+				<div className='flex items-baseline justify-between p-4'>
 					<label htmlFor='title'>
 						Title
 					</label>
@@ -55,11 +54,11 @@ export const CreateTodo = () => {
 							<option key={i} value={option.value}>{option.label}</option>
 						))}
 					</select>
-					<button type="submit">
-						Create
-					</button>
-				</form>
-			</div>
+				</div>
+				<button type="submit" className='float-right px-4 m-4'>
+					Create
+				</button>
+			</form>
 		</section>
 	)
 }

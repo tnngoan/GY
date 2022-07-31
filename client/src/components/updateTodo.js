@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { options } from './createTodo'
 
 const UpdateTodo = ({ _id, handleClose, handleUpdate }) => {
 	const [data, setData] = useState({ title: "", category: "" });
@@ -10,7 +11,6 @@ const UpdateTodo = ({ _id, handleClose, handleUpdate }) => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		console.log({ _id }, { data });
 		axios
 			.put(`http://localhost:8000/api/todo/${_id}`, data)
 			.then((res) => {
@@ -29,25 +29,19 @@ const UpdateTodo = ({ _id, handleClose, handleUpdate }) => {
 				handleUpdate()
 				handleClose()
 			}}
-				type="text" noValidate >
-				<label htmlFor='title'>
-					Title
-				</label>
-				<input onChange={handleChange} type="text" name="title" value={data.title} />
-				<label htmlFor='category'>
-					Category
-				</label>
-				<select name="category" defaultValue="busywork" onSelect={handleChange}>
-					<option name="education" value="education" >Edutcation</option>
-					<option value={data.category} >Recreational</option>
-					<option value={data.category} >Social</option>
-					<option value={data.category} >DIY</option>
-					<option value={data.category} >Charity</option>
-					<option value={data.category} >Cooking</option>
-					<option value={data.category} >Relaxation</option>
-					<option value={data.category} >Busywork</option>
-				</select>
-				<button type="submit">
+				className="flex flex-cols justify-between" type="text" noValidate >
+				<div className='flex'>
+					<label htmlFor='title'>
+						Title
+					</label>
+					<input onChange={handleChange} type="text" name="title" value={data.title} className="outline p-2 m-3" />
+					<select name="category" value={data.category} onChange={handleChange}>
+						{options.map((option, i) => (
+							<option key={i} value={option.value}>{option.label}</option>
+						))}
+					</select>
+				</div>
+				<button type="submit" className='flex float-right'>
 					Update
 				</button>
 			</form>
