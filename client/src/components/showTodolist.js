@@ -48,11 +48,6 @@ export const ShowTodolist = () => {
 
 	return (
 		<section>
-			{/* <Link to="/create">
-				<button>
-					New
-				</button>
-			</Link> */}
 			<div>
 				<h1>TODOLIST</h1>
 				<ul>
