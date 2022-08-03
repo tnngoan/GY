@@ -2,7 +2,7 @@ const Todo = require("../models/todo");
 
 exports.getAllTodo = (req, res) => {
 	Todo.find()
-		.then((todo) => console.log(res.json(todo)))
+		.then((todo) =>res.json(todo))
 		.catch((err) =>
 			res
 				.status(404)

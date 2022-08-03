@@ -2,6 +2,7 @@ import React from 'react'
 
 const TodoCard = ({ data, func }) => {
 	const { _id, title, category } = data
+
 	return (
 		<li key={_id}>
 			<div className='flex justify-between'>
@@ -11,7 +12,7 @@ const TodoCard = ({ data, func }) => {
 					<p>{category}</p>
 				</div>
 				<div>
-					<button name={_id} className="p-2 m-2 border" onClick={func.handleEdit}>
+					<button name={_id} className="p-2 m-2 border" onClick={func.handleEdit()}>
 						Edit
 					</button>
 					<button name={_id} className="p-2 border" onClick={func.handleDelete}>
