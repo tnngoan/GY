@@ -1,18 +1,13 @@
 
 # scripts to get started
 
+- rename `.env.example` to `.env`
 - `npm install / yarn install`
 - `npm get-me-started / yarn get-me-started`
 
 > The assignment is to develop a simple to-do list that allows the user to add, edit and delete a to-do task.
 
 This app is built with MERN stack
-
-## unfinished
-
-# Form UI
-
-After submitting the form, the task list must show the newly added task.
 
 # Rocket
 
