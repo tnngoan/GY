@@ -25,10 +25,8 @@ export const CreateTodo = ({ handleUpdate }) => {
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (!data.title || !data.category) {
-			alert("Fill in the blank!")
-			return
+			alert("Fill in the empty field!")
 		}
-		alert("Creating task " + data.title)
 		axios.post("http://localhost:8000/api/todo", data).then((res) => {
 			setData({ title: "", category: "" })
 			handleUpdate()
@@ -63,13 +61,13 @@ export const CreateTodo = ({ handleUpdate }) => {
 							))}
 						</select>
 					</div>
-					<button type="submit" className='float-right p-4 py-3 rounded m-4 bg-pink-500 shadow-xl'>
+					<button type="submit" className='float-right p-4 py-3 rounded m-4 bg-blue-200 shadow-xl'>
 						Create
 					</button>
 				</form>
 				<button onClick={(e) => {
 					handleRandom(e)
-				}} className='float-right p-4 py-3 rounded m-4 bg-pink-500 shadow-xl'>
+				}} className='float-right p-4 py-3 rounded m-4 bg-pink-600 shadow-xl'>
 					Random
 				</button>
 			</section>

@@ -24,13 +24,13 @@ const UpdateTodo = ({ _id, handleClose, handleUpdate, editData }) => {
 	}
 
 	return (
-		<div className='flex items-baseline mx-4'>
+		<div className='flex items-baseline justify-around mx-4 py-4 bg-pink-300 rounded-md'>
 			<form onSubmit={(e) => {
 				handleSubmit(e)
 				handleUpdate()
 				handleClose()
 			}}
-				className="flex justify-between items-center" type="text" noValidate >
+				className="flex flex-col justify-between items-center" type="text" noValidate >
 				<div className='flex items-baseline'>
 					<label htmlFor='title'>
 						Title
@@ -42,7 +42,8 @@ const UpdateTodo = ({ _id, handleClose, handleUpdate, editData }) => {
 						))}
 					</select>
 				</div>
-				<button type="submit" className='flex float-right justifly-center items-center bg-pink-400 py-3 px-4 mx-3 rounded shadow-xl'>
+				<br/>
+				<button type="submit" className='flex float-right justifly-center items-center bg-blue-300 py-3 px-4 mx-3 rounded shadow-xl'>
 					Update
 				</button>
 			</form>
